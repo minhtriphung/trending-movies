@@ -10,19 +10,21 @@ import Moya
 
 var TMDBAPIProvider = MoyaProvider<TMDBAPI>(endpointClosure: endPointClosure)
 
+let APIAccessToken = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxY2Y0MDJlNTg1M2VkOWM3ZWJmMDIyZjg2YWNkZTZjZSIsInN1YiI6IjY1MDFjZTg2ZTBjYTdmMDEyZWI5NGFkYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.mn-QAi2WlJdyoJfqYdj-WWcq9LU_dq1HVjM1ngvpawg"
+
 enum TMDBAPI {
-    case getTrendingMovies
+    case getTrendingMovies(time: TrendingMovieTime)
 }
 
 extension TMDBAPI: TargetType {
     var baseURL: URL {
-        return URL(string: "https://api.themoviedb.org/3/")!
+        return URL(string: "https://api.themoviedb.org")!
     }
     
     var path: String {
         switch self {
-        case .getTrendingMovies:
-            return "trending/movie/"
+        case .getTrendingMovies(let time):
+            return "/3/trending/movie/\(String(describing: time))?language=en-US"
         }
     }
     
@@ -36,7 +38,7 @@ extension TMDBAPI: TargetType {
     var parameters: [String: Any]? {
         switch self {
         case .getTrendingMovies:
-            return ["": ""]
+            return nil
         }
     }
     
@@ -55,7 +57,7 @@ extension TMDBAPI: TargetType {
         let header = [
           "Accept" : "application/json",
           "Content-Type" : "application/json",
-          "Authorization" : "Bearer 47aa75b56464da7a186b813a50035cd4"
+          "Authorization" : "Bearer \(APIAccessToken)"
         ]
         
         return header
@@ -67,7 +69,7 @@ extension TMDBAPI: TargetType {
 }
 
 var endPointClosure = { (target: TMDBAPI) -> Endpoint in
-    let url = target.baseURL.appendingPathComponent(target.path).absoluteString
+    let url = String(format: "%@%@", target.baseURL.absoluteString, target.path)
     let endpoint: Endpoint = Endpoint(url: url, sampleResponseClosure: {.networkResponse(200, target.sampleData)}, method: target.method, task: target.task, httpHeaderFields: target.headers)
     return endpoint.adding(newHTTPHeaderFields: target.headers!)
 }
