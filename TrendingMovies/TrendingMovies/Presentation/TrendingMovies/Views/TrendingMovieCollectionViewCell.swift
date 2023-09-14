@@ -25,8 +25,14 @@ class TrendingMovieCollectionViewCell: UICollectionViewCell {
 
     func setupData(_ movie: TrendingMovie) {
         self.movieNameLabel.text = movie.title
-        self.releaseDateLabel.text = movie.releaseDate
-        //self.moviePosterImageView.kf.setImage(with: movie.imageUrl)
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let date = dateFormatter.date(from:movie.releaseDate) ?? Date()
+        dateFormatter.dateFormat = "MMM d, yyyy"
+        
+        self.releaseDateLabel.text = dateFormatter.string(from: date)
         self.moviePosterImageView.kf.setImage(with: movie.imageUrl) { result in
             self.activityIndicator.stopAnimating()
         }
