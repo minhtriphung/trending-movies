@@ -12,6 +12,8 @@ var TMDBAPIProvider = MoyaProvider<TMDBAPI>(endpointClosure: endPointClosure)
 
 let APIAccessToken = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxY2Y0MDJlNTg1M2VkOWM3ZWJmMDIyZjg2YWNkZTZjZSIsInN1YiI6IjY1MDFjZTg2ZTBjYTdmMDEyZWI5NGFkYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.mn-QAi2WlJdyoJfqYdj-WWcq9LU_dq1HVjM1ngvpawg"
 
+let TMDBImageUrl = "https://image.tmdb.org/t/p/original"
+
 enum TMDBAPI {
     case getTrendingMovies(time: TrendingMovieTime)
 }

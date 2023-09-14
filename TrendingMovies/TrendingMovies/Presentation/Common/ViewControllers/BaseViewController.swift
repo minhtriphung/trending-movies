@@ -6,9 +6,25 @@
 //
 
 import UIKit
+import RxSwift
+
+class NavigationController: UINavigationController {
+
+    // MARK: View Lifecycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        .lightContent
+    }
+}
+
 
 class BaseViewController: UIViewController {
 
+    public let disposeBag = DisposeBag()
+    
     // MARK: View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,6 +32,9 @@ class BaseViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        .lightContent
+    }
     
 }
 

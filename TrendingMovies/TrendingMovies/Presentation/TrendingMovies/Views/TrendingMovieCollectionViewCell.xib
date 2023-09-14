@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="movieCell" id="gTV-IL-0wX" customClass="TrendingMovieCollectionViewCell" customModule="TrendingMovies" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="170" height="327"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="170" height="327"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="movie-poster" translatesAutoresizingMaskIntoConstraints="NO" id="d2x-pn-beh">
+                        <rect key="frame" x="0.0" y="0.0" width="170" height="255"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="d2x-pn-beh" secondAttribute="height" multiplier="2:3" id="vYe-pc-0c8"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Carl's Date" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="noM-N0-H0d">
+                        <rect key="frame" x="0.0" y="263" width="170" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="Q0n-Rb-uba"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jun 15, 2023" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ttk-vE-HAP">
+                        <rect key="frame" x="0.0" y="307" width="170" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="5Y2-6e-5jI"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="LjX-sx-EM1">
+                        <rect key="frame" x="60" y="102.66666666666667" width="50" height="50.000000000000014"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="4eY-Xg-9M9"/>
+                            <constraint firstAttribute="width" constant="50" id="i05-Rb-x9Y"/>
+                        </constraints>
+                        <color key="color" systemColor="systemOrangeColor"/>
+                    </activityIndicatorView>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="LjX-sx-EM1" firstAttribute="centerX" secondItem="d2x-pn-beh" secondAttribute="centerX" id="6AZ-2i-cj4"/>
+                <constraint firstItem="noM-N0-H0d" firstAttribute="top" secondItem="d2x-pn-beh" secondAttribute="bottom" constant="8" id="G8E-Mb-evT"/>
+                <constraint firstAttribute="trailing" secondItem="d2x-pn-beh" secondAttribute="trailing" id="GBD-DJ-AVU"/>
+                <constraint firstItem="noM-N0-H0d" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="KxW-x1-Q3k"/>
+                <constraint firstItem="LjX-sx-EM1" firstAttribute="centerY" secondItem="d2x-pn-beh" secondAttribute="centerY" id="Kxu-sG-bzO"/>
+                <constraint firstAttribute="trailing" secondItem="noM-N0-H0d" secondAttribute="trailing" id="Mdt-hD-Rye"/>
+                <constraint firstItem="Ttk-vE-HAP" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="XfW-5v-kfD"/>
+                <constraint firstItem="d2x-pn-beh" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="awh-fg-7DA"/>
+                <constraint firstItem="d2x-pn-beh" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="d1s-8w-fl5"/>
+                <constraint firstItem="LjX-sx-EM1" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="lbv-Fu-eAm"/>
+                <constraint firstAttribute="trailing" secondItem="Ttk-vE-HAP" secondAttribute="trailing" id="nAw-gR-Lyg"/>
+                <constraint firstItem="Ttk-vE-HAP" firstAttribute="top" secondItem="noM-N0-H0d" secondAttribute="bottom" constant="4" id="xkc-QM-hhn"/>
+            </constraints>
+            <size key="customSize" width="170" height="327"/>
+            <connections>
+                <outlet property="activityIndicator" destination="LjX-sx-EM1" id="8al-3h-Vzu"/>
+                <outlet property="movieNameLabel" destination="noM-N0-H0d" id="8Y4-QD-1vg"/>
+                <outlet property="moviePosterImageView" destination="d2x-pn-beh" id="4A5-y3-fPA"/>
+                <outlet property="releaseDateLabel" destination="Ttk-vE-HAP" id="naF-qK-s20"/>
+            </connections>
+            <point key="canvasLocation" x="140.45801526717557" y="85.563380281690144"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="movie-poster" width="220" height="330"/>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

@@ -11,6 +11,7 @@ target 'TrendingMovies' do
   pod 'RxCocoa'
   pod 'Moya/RxSwift'
   pod 'SwiftyJSON'
+  pod 'Kingfisher'
 
   target 'TrendingMoviesTests' do
     inherit! :search_paths

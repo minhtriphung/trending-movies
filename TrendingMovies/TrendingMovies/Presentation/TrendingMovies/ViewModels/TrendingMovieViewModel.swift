@@ -14,22 +14,27 @@ class TrendingMovieViewModel {
     // MARK: - Define Variables
     private let disposeBag = DisposeBag()
     
+    var errorBR = BehaviorRelay<APIError?>(value: nil)
+    var movieListBR = BehaviorRelay<[TrendingMovie]>(value: [])
     
     // MARK: - Support Methods
-    func getTrendingMovieBy(_ time: TrendingMovieTime, completion: ((APIError?) -> Void)?) {
+    func getTrendingMovieBy(_ time: TrendingMovieTime) {
         let request = TMDBAPIProvider.rx.request(.getTrendingMovies(time: time))
         
         request.asObservable().subscribe(onNext: { [weak self] (response) in
             guard let self = self else { return }
-            
             let apiResponse = response.mapApi()
             if response.isSuccess {
-                completion?(nil)
+                if let data = apiResponse.data {
+                    let movieList = data["results"].arrayValue.compactMap { TrendingMovie(json: $0) }
+                    self.movieListBR.accept(movieList)
+                }
+                self.errorBR.accept(nil)
             } else {
-                completion?(apiResponse.error)
+                self.errorBR.accept(apiResponse.error)
             }
         }, onError: { (error) in
-            completion?(APIError(code: "Timeout", message: "Request time out"))
+            self.errorBR.accept(APIError(code: "Timeout", message: "Request time out"))
         }).disposed(by: disposeBag)
     }
 }

@@ -23,7 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.makeKeyAndVisible()
         
         let vc = TodayTrendingMoviesViewController(nibName: "TodayTrendingMoviesViewController", bundle: nil)
-        self.window?.rootViewController = vc
+        let navi = NavigationController(rootViewController: vc)
+        self.window?.rootViewController = navi
         
         return true
     }

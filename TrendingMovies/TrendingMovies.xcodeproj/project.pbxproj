@@ -24,6 +24,8 @@
 		AB0F44C72AB20E7E00FB3359 /* TrendingMovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0F44C62AB20E7E00FB3359 /* TrendingMovieViewModel.swift */; };
 		AB0F44C92AB20FC900FB3359 /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0F44C82AB20FC900FB3359 /* APIResponse.swift */; };
 		AB0F44CD2AB2196300FB3359 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0F44CC2AB2196300FB3359 /* BaseViewController.swift */; };
+		ABF75F8A2AB365FF002FE1DC /* TrendingMovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF75F882AB365FF002FE1DC /* TrendingMovieCollectionViewCell.swift */; };
+		ABF75F8B2AB365FF002FE1DC /* TrendingMovieCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABF75F892AB365FF002FE1DC /* TrendingMovieCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +68,8 @@
 		AB0F44C62AB20E7E00FB3359 /* TrendingMovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingMovieViewModel.swift; sourceTree = "<group>"; };
 		AB0F44C82AB20FC900FB3359 /* APIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponse.swift; sourceTree = "<group>"; };
 		AB0F44CC2AB2196300FB3359 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		ABF75F882AB365FF002FE1DC /* TrendingMovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingMovieCollectionViewCell.swift; sourceTree = "<group>"; };
+		ABF75F892AB365FF002FE1DC /* TrendingMovieCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrendingMovieCollectionViewCell.xib; sourceTree = "<group>"; };
 		C1D336301A2AD824C226E8E5 /* Pods-TrendingMovies.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrendingMovies.debug.xcconfig"; path = "Target Support Files/Pods-TrendingMovies/Pods-TrendingMovies.debug.xcconfig"; sourceTree = "<group>"; };
 		C33BC87F355A75A4B3EEC520 /* Pods-TrendingMovies-TrendingMoviesUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrendingMovies-TrendingMoviesUITests.debug.xcconfig"; path = "Target Support Files/Pods-TrendingMovies-TrendingMoviesUITests/Pods-TrendingMovies-TrendingMoviesUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C49A6FC6C8B927A9A7C50DBC /* Pods-TrendingMoviesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrendingMoviesTests.debug.xcconfig"; path = "Target Support Files/Pods-TrendingMoviesTests/Pods-TrendingMoviesTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -192,6 +196,8 @@
 		AB0F44BB2AB1C1A700FB3359 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				ABF75F882AB365FF002FE1DC /* TrendingMovieCollectionViewCell.swift */,
+				ABF75F892AB365FF002FE1DC /* TrendingMovieCollectionViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -381,6 +387,7 @@
 			files = (
 				AB0F44902AB17B4C00FB3359 /* LaunchScreen.storyboard in Resources */,
 				AB0F448D2AB17B4C00FB3359 /* Assets.xcassets in Resources */,
+				ABF75F8B2AB365FF002FE1DC /* TrendingMovieCollectionViewCell.xib in Resources */,
 				AB0F44B62AB1BBA600FB3359 /* TodayTrendingMoviesViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -510,6 +517,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB0F44C92AB20FC900FB3359 /* APIResponse.swift in Sources */,
+				ABF75F8A2AB365FF002FE1DC /* TrendingMovieCollectionViewCell.swift in Sources */,
 				AB0F44B52AB1BBA600FB3359 /* TodayTrendingMoviesViewController.swift in Sources */,
 				AB0F44C32AB20B2600FB3359 /* TrendingMovie.swift in Sources */,
 				AB0F44C02AB1C3A100FB3359 /* APIService.swift in Sources */,
@@ -692,6 +700,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Trending Movies";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -725,6 +734,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Trending Movies";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
