@@ -50,11 +50,32 @@
                         </constraints>
                         <color key="color" systemColor="systemOrangeColor"/>
                     </activityIndicatorView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PKS-GU-pK8">
+                        <rect key="frame" x="10" y="233" width="30" height="30"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7.2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Afj-u9-Mlc">
+                                <rect key="frame" x="4" y="4" width="22" height="22"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="11"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="9mj-Bx-8yW"/>
+                            <constraint firstAttribute="trailing" secondItem="Afj-u9-Mlc" secondAttribute="trailing" constant="4" id="Clz-iF-t7t"/>
+                            <constraint firstAttribute="bottom" secondItem="Afj-u9-Mlc" secondAttribute="bottom" constant="4" id="cj7-65-Pn7"/>
+                            <constraint firstItem="Afj-u9-Mlc" firstAttribute="top" secondItem="PKS-GU-pK8" secondAttribute="top" constant="4" id="tKq-oA-y5b"/>
+                            <constraint firstItem="Afj-u9-Mlc" firstAttribute="leading" secondItem="PKS-GU-pK8" secondAttribute="leading" constant="4" id="w8S-Dw-loZ"/>
+                            <constraint firstAttribute="height" constant="30" id="zsS-vQ-8T4"/>
+                        </constraints>
+                    </view>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
                 <constraint firstItem="LjX-sx-EM1" firstAttribute="centerX" secondItem="d2x-pn-beh" secondAttribute="centerX" id="6AZ-2i-cj4"/>
+                <constraint firstItem="PKS-GU-pK8" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="7XE-pR-xXO"/>
                 <constraint firstItem="noM-N0-H0d" firstAttribute="top" secondItem="d2x-pn-beh" secondAttribute="bottom" constant="8" id="G8E-Mb-evT"/>
                 <constraint firstAttribute="trailing" secondItem="d2x-pn-beh" secondAttribute="trailing" id="GBD-DJ-AVU"/>
                 <constraint firstItem="noM-N0-H0d" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="KxW-x1-Q3k"/>
@@ -65,6 +86,7 @@
                 <constraint firstItem="d2x-pn-beh" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="d1s-8w-fl5"/>
                 <constraint firstItem="LjX-sx-EM1" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="lbv-Fu-eAm"/>
                 <constraint firstAttribute="trailing" secondItem="Ttk-vE-HAP" secondAttribute="trailing" id="nAw-gR-Lyg"/>
+                <constraint firstItem="noM-N0-H0d" firstAttribute="top" secondItem="PKS-GU-pK8" secondAttribute="bottom" id="sBX-kO-Dgc"/>
                 <constraint firstItem="Ttk-vE-HAP" firstAttribute="top" secondItem="noM-N0-H0d" secondAttribute="bottom" constant="4" id="xkc-QM-hhn"/>
             </constraints>
             <size key="customSize" width="170" height="327"/>
@@ -73,6 +95,8 @@
                 <outlet property="movieNameLabel" destination="noM-N0-H0d" id="8Y4-QD-1vg"/>
                 <outlet property="moviePosterImageView" destination="d2x-pn-beh" id="4A5-y3-fPA"/>
                 <outlet property="releaseDateLabel" destination="Ttk-vE-HAP" id="naF-qK-s20"/>
+                <outlet property="voteAverageLabel" destination="Afj-u9-Mlc" id="vxV-2a-N3U"/>
+                <outlet property="voteAverageView" destination="PKS-GU-pK8" id="nu2-La-5Gw"/>
             </connections>
             <point key="canvasLocation" x="140.45801526717557" y="85.563380281690144"/>
         </collectionViewCell>
