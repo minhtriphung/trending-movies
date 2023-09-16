@@ -65,6 +65,14 @@ class TodayTrendingMoviesViewController: BaseViewController {
         }).disposed(by: self.disposeBag)
     }
     
+    private func searchMovie(query: String) {
+        let list = self.movieList.filter { movie in
+            return movie.title.contains(query)
+        }
+        self.movieList = list
+        self.collectionView.reloadData()
+    }
+    
     private func setupReachability() {
         self.reachability = try? Reachability(hostname: "google.com")
         NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged(_:)), name: .reachabilityChanged, object: reachability)
@@ -78,7 +86,7 @@ class TodayTrendingMoviesViewController: BaseViewController {
         }
     }
     
-    func stopNotifier() {
+    private func stopNotifier() {
         reachability?.stopNotifier()
         NotificationCenter.default.removeObserver(self, name: .reachabilityChanged, object: nil)
         reachability = nil
@@ -133,11 +141,17 @@ extension TodayTrendingMoviesViewController: UICollectionViewDelegate {
 extension TodayTrendingMoviesViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        let isLocal = reachability?.connection == .unavailable
+        
         if searchText.isEmpty {
-            self.viewModel.getTrendingMovieBy(time: .day)
+            self.viewModel.getTrendingMovieBy(time: .day, isLocal: isLocal)
             return
         }
-        self.viewModel.searchMovie(query: searchText)
+        if isLocal {
+            self.searchMovie(query: searchText)
+        } else {
+            self.viewModel.searchMovie(query: searchText)
+        }
     }
 }
 
