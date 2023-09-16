@@ -29,8 +29,6 @@ class TodayTrendingMoviesViewController: BaseViewController {
         
         self.navigationItem.title = "Trending Movies"
         
-        // Do any additional setup after loading the view.
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -93,7 +91,9 @@ extension TodayTrendingMoviesViewController: UICollectionViewDelegateFlowLayout 
 
 extension TodayTrendingMoviesViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        let vc = MovieDetailViewController(nibName: "MovieDetailViewController", bundle: nil)
+        vc.currentMovie = movieList[indexPath.row]
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 

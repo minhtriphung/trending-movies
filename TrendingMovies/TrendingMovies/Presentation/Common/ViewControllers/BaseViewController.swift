@@ -36,6 +36,21 @@ class BaseViewController: UIViewController {
         .lightContent
     }
     
+    func setupBackNavigationBarItem() {
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
+        button.backgroundColor = .clear
+        button.setImage(UIImage(named: "icon_back"), for: .normal)
+        button.tintColor = .white
+        button.addTarget(self, action: #selector(handleBackBarButtonItemEvent(_:)), for: .touchUpInside)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: button)
+    }
+    
+    // MARK: Event
+    @objc private func handleBackBarButtonItemEvent(_ button: UIButton) {
+        if let navigationController = self.navigationController {
+            navigationController.popViewController(animated: true)
+        }
+    }
 }
 
 // MARK: - Show Alert

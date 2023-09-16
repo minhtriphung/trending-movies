@@ -16,6 +16,7 @@ let TMDBImageUrl = "https://image.tmdb.org/t/p/original"
 
 enum TMDBAPI {
     case getTrendingMovies(time: TrendingMovieTime)
+    case getDetailMovie(id: Int)
 }
 
 extension TMDBAPI: TargetType {
@@ -27,6 +28,8 @@ extension TMDBAPI: TargetType {
         switch self {
         case .getTrendingMovies(let time):
             return "/3/trending/movie/\(String(describing: time))?language=en-US"
+        case .getDetailMovie(let id):
+            return "/3/movie/\(id)"
         }
     }
     
@@ -34,12 +37,16 @@ extension TMDBAPI: TargetType {
         switch self {
         case .getTrendingMovies:
             return .get
+        case .getDetailMovie:
+            return .get
         }
     }
     
     var parameters: [String: Any]? {
         switch self {
         case .getTrendingMovies:
+            return nil
+        case .getDetailMovie:
             return nil
         }
     }
