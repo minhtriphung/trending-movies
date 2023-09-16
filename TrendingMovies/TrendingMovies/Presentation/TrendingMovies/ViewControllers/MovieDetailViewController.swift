@@ -23,6 +23,7 @@ class MovieDetailViewController: BaseViewController {
     
     let viewModel = TrendingMovieViewModel()
     var currentMovie: TrendingMovie?
+    var isLocal: Bool = false
     
     // MARK: View Lifecycle
     override func viewDidLoad() {
@@ -55,11 +56,26 @@ class MovieDetailViewController: BaseViewController {
         self.genresLabel.text = ""
         guard let movie = currentMovie else { return }
         self.navigationItem.title = "Movie Detail"
-        self.backdropImageView.kf.setImage(with: movie.backdropUrl) { result in
-            self.activityIndicator.stopAnimating()
-        }
+       
+        self.viewModel.getDetailMovie(id: movie.id, isLocal: isLocal)
         
-        self.viewModel.getDetailMovie(id: movie.id)
+        if let fileURL = URL(string: movie.backdropUrl) {
+            if isLocal {
+                self.activityIndicator.stopAnimating()
+                self.backdropImageView.image = movie.loadImageWith(fileName: fileURL.lastPathComponent)
+                return
+            }
+            self.backdropImageView.kf.setImage(with: fileURL) { result in
+                switch result {
+                case .success(let value):
+                    movie.saveImage(imageName: fileURL.lastPathComponent, image: value.image)
+                    print("Task done for: \(value.source.url?.absoluteString ?? "")")
+                case .failure(let error):
+                    print("Job failed: \(error.localizedDescription)")
+                }
+                self.activityIndicator.stopAnimating()
+            }
+        }
     }
     
     private func bindViewModel() {

@@ -7,15 +7,21 @@
 
 import UIKit
 import SwiftyJSON
+import RealmSwift
 
-class ProductionCountry: JSONParsable {
+class ProductionCountry: Object, JSONParsable {
     
     // MARK: Define Variables
-    let code: String
-    let name: String
+    @objc dynamic var code: String = ""
+    @objc dynamic var name: String = ""
     
+    override class func primaryKey() -> String? {
+        "code"
+    }
     
     // MARK: Init
+    override init() { }
+    
     required init(json: JSON) {
         self.code = json["iso_3166_1"].stringValue
         self.name = json["name"].stringValue

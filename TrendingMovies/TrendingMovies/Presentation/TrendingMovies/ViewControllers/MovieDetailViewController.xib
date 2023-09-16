@@ -35,9 +35,12 @@
                         <constraint firstAttribute="width" secondItem="cYF-DN-vdm" secondAttribute="height" multiplier="393:221" id="A9k-dr-bPI"/>
                     </constraints>
                 </imageView>
-                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="jFp-ic-rxf">
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="jFp-ic-rxf">
                     <rect key="frame" x="171.66666666666666" y="144.66666666666666" width="50" height="50"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="KKh-MY-ePp"/>
+                        <constraint firstAttribute="width" secondItem="jFp-ic-rxf" secondAttribute="height" multiplier="1:1" id="Xyr-GI-fri"/>
+                    </constraints>
                     <color key="color" systemColor="systemOrangeColor"/>
                 </activityIndicatorView>
                 <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="a4a-JR-548">
@@ -164,7 +167,9 @@
                 <constraint firstItem="cYF-DN-vdm" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="F2a-FP-EDf"/>
                 <constraint firstItem="cYF-DN-vdm" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="HPm-Mp-TtP"/>
                 <constraint firstAttribute="bottom" secondItem="KPK-4c-BxO" secondAttribute="bottom" id="IsB-9o-a8o"/>
+                <constraint firstItem="jFp-ic-rxf" firstAttribute="centerX" secondItem="cYF-DN-vdm" secondAttribute="centerX" id="Oyz-ek-t6E"/>
                 <constraint firstItem="KPK-4c-BxO" firstAttribute="top" secondItem="cYF-DN-vdm" secondAttribute="bottom" id="Tg6-RE-IFf"/>
+                <constraint firstItem="jFp-ic-rxf" firstAttribute="centerY" secondItem="cYF-DN-vdm" secondAttribute="centerY" id="hRS-wg-fa7"/>
                 <constraint firstItem="a4a-JR-548" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="s5g-HQ-zRG"/>
             </constraints>
             <point key="canvasLocation" x="49.618320610687022" y="-11.267605633802818"/>

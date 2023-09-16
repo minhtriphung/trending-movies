@@ -6,10 +6,13 @@
 //
 
 import UIKit
+import Reachability
 
 class TodayTrendingMoviesViewController: BaseViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    var reachability: Reachability?
     
     let viewModel = TrendingMovieViewModel()
     private var movieList: [TrendingMovie] = []
@@ -29,13 +32,16 @@ class TodayTrendingMoviesViewController: BaseViewController {
         
         self.navigationItem.title = "Trending Movies"
         
+        self.stopNotifier()
+        self.setupReachability()
+        self.startNotifier()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.setupUI()
         self.bindViewModel()
-        self.viewModel.getTrendingMovieBy(time: .day)
+        self.viewModel.getTrendingMovieBy(time: .day, isLocal: reachability?.connection == .unavailable)
     }
     
     // MARK: Private
@@ -59,7 +65,33 @@ class TodayTrendingMoviesViewController: BaseViewController {
         }).disposed(by: self.disposeBag)
     }
     
+    private func setupReachability() {
+        self.reachability = try? Reachability(hostname: "google.com")
+        NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged(_:)), name: .reachabilityChanged, object: reachability)
+    }
+    
+    private func startNotifier() {
+        do {
+            try reachability?.startNotifier()
+        } catch {
+            return
+        }
+    }
+    
+    func stopNotifier() {
+        reachability?.stopNotifier()
+        NotificationCenter.default.removeObserver(self, name: .reachabilityChanged, object: nil)
+        reachability = nil
+    }
+    
     // MARK: Event
+    @objc func reachabilityChanged(_ note: Notification) {
+        let reachability = note.object as! Reachability
+        
+        if reachability.connection == .unavailable {
+            self.show(title: "Error", message: "No internet connection")
+        }
+    }
 }
 
 extension TodayTrendingMoviesViewController: UICollectionViewDataSource {
@@ -72,7 +104,7 @@ extension TodayTrendingMoviesViewController: UICollectionViewDataSource {
             return TrendingMovieCollectionViewCell()
         }
         
-        cell.setupData(movieList[indexPath.row])
+        cell.setupData(movieList[indexPath.row], isLocal: reachability?.connection == .unavailable)
         return cell
     }
 }
@@ -92,6 +124,7 @@ extension TodayTrendingMoviesViewController: UICollectionViewDelegateFlowLayout 
 extension TodayTrendingMoviesViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = MovieDetailViewController(nibName: "MovieDetailViewController", bundle: nil)
+        vc.isLocal = reachability?.connection == .unavailable
         vc.currentMovie = movieList[indexPath.row]
         self.navigationController?.pushViewController(vc, animated: true)
     }
