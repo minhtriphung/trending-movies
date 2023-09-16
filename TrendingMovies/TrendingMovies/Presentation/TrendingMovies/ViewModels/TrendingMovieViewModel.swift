@@ -85,13 +85,12 @@ class TrendingMovieViewModel {
                     self.movieSelected.accept(movie)
                     try! self.realm.write {
                         movie.genres.forEach { genre in
-                            self.realm.add(genre, update: .modified)
+                            self.realm.add(genre, update: .all)
                         }
-                        
+
                         movie.productionCountries.forEach { country in
-                            self.realm.add(country, update: .modified)
+                            self.realm.add(country, update: .all)
                         }
-                        
                         self.realm.add(movie, update: .modified)
                     }
                 }

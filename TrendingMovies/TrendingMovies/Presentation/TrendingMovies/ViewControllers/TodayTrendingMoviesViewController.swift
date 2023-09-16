@@ -31,14 +31,13 @@ class TodayTrendingMoviesViewController: BaseViewController {
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
         
         self.navigationItem.title = "Trending Movies"
-        
-        self.stopNotifier()
-        self.setupReachability()
-        self.startNotifier()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.stopNotifier()
+        self.setupReachability()
+        self.startNotifier()
         self.setupUI()
         self.bindViewModel()
         self.viewModel.getTrendingMovieBy(time: .day, isLocal: reachability?.connection == .unavailable)

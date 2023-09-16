@@ -27,8 +27,8 @@ class TrendingMovie: Object, JSONParsable {
     @objc dynamic var overview: String = ""
     @objc dynamic var tagline: String = ""
     @objc dynamic var originalLanguage: String = ""
-    dynamic var genres: [Genres] = []
-    dynamic var productionCountries: [ProductionCountry] = []
+    dynamic var genres = List<Genres>()
+    dynamic var productionCountries = List<ProductionCountry>()
     
     override class func primaryKey() -> String? {
         "id"
@@ -46,8 +46,6 @@ class TrendingMovie: Object, JSONParsable {
         overview = ""
         tagline = ""
         originalLanguage = ""
-        genres = []
-        productionCountries = []
     }
 
     required init(json: JSON) {
@@ -61,8 +59,16 @@ class TrendingMovie: Object, JSONParsable {
         self.overview = json["overview"].stringValue
         self.tagline = json["tagline"].stringValue
         self.originalLanguage = json["original_language"].stringValue
-        self.genres = json["genres"].arrayValue.compactMap { Genres(json: $0) }
-        self.productionCountries = json["production_countries"].arrayValue.compactMap { ProductionCountry(json: $0) }
+        
+        let genresList = json["genres"].arrayValue
+        for json in genresList {
+            self.genres.append(Genres(json: json))
+        }
+        
+        let countries = json["production_countries"].arrayValue
+        for json in countries {
+            self.productionCountries.append(ProductionCountry(json: json))
+        }
     }
     
     func saveImage(imageName: String, image: UIImage) {
