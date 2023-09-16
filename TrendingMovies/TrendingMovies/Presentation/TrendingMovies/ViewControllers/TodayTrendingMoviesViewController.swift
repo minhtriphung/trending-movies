@@ -35,7 +35,7 @@ class TodayTrendingMoviesViewController: BaseViewController {
         super.viewWillAppear(animated)
         self.setupUI()
         self.bindViewModel()
-        self.viewModel.getTrendingMovieBy(.day)
+        self.viewModel.getTrendingMovieBy(time: .day)
     }
     
     // MARK: Private
@@ -97,4 +97,14 @@ extension TodayTrendingMoviesViewController: UICollectionViewDelegate {
     }
 }
 
+extension TodayTrendingMoviesViewController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            self.viewModel.getTrendingMovieBy(time: .day)
+            return
+        }
+        self.viewModel.searchMovie(query: searchText)
+    }
+}
 

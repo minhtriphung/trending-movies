@@ -20,8 +20,18 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="mRW-sK-Qoc">
+                    <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="jjN-Sj-GS4"/>
+                    </constraints>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="WfG-IF-Lji"/>
+                    </connections>
+                </searchBar>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="MKx-8W-es2">
-                    <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                    <rect key="frame" x="0.0" y="103" width="393" height="715"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="OPZ-xe-ibM">
                         <size key="itemSize" width="128" height="128"/>
@@ -34,9 +44,12 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="MKx-8W-es2" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="63u-DN-eSn"/>
+                <constraint firstItem="MKx-8W-es2" firstAttribute="top" secondItem="mRW-sK-Qoc" secondAttribute="bottom" id="4pU-gN-E4f"/>
+                <constraint firstItem="mRW-sK-Qoc" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="FzH-pL-ocN"/>
+                <constraint firstItem="mRW-sK-Qoc" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="N5y-bn-yB5"/>
                 <constraint firstItem="MKx-8W-es2" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="OON-jp-6wb"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="MKx-8W-es2" secondAttribute="bottom" id="T1d-jU-lpF"/>
+                <constraint firstItem="mRW-sK-Qoc" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="ntA-96-Zbm"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="MKx-8W-es2" secondAttribute="trailing" id="tff-NZ-auE"/>
             </constraints>
             <point key="canvasLocation" x="58.778625954198468" y="-11.267605633802818"/>

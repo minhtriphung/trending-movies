@@ -59,7 +59,7 @@ class MovieDetailViewController: BaseViewController {
             self.activityIndicator.stopAnimating()
         }
         
-        self.viewModel.getDetailMovie(movie.id)
+        self.viewModel.getDetailMovie(id: movie.id)
     }
     
     private func bindViewModel() {
