@@ -39,6 +39,7 @@ class TrendingMovieCollectionViewCell: UICollectionViewCell {
         
         if let fileURL = URL(string: movie.imageUrl) {
             if isLocal {
+                self.activityIndicator.stopAnimating()
                 self.moviePosterImageView.image = movie.loadImageWith(fileName: fileURL.lastPathComponent)
             } else {
                 self.moviePosterImageView.kf.setImage(with: fileURL) { result in
